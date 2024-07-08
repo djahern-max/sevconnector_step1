@@ -11,7 +11,7 @@ process.env.SUPPRESS_NO_CONFIG_WARNING = 'true'
 const app = express()
 app.use(
   cors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:4000',
   })
 )
 
@@ -91,7 +91,7 @@ app.post('/api/deliveries', (req, res) => {
   })
 })
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 4000
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })

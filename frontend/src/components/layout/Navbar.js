@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fa-regular fa-handshake"></i> SevConnector{" "}
+          <i className="fa-regular fa-handshake"></i> SevConnectorstep_1{" "}
         </Link>
       </h1>
       <ul>
