@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql2/promise') // Use 'mysql2/promise' for async/await support
 const bcrypt = require('bcryptjs')
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
 
 const app = express()
@@ -16,14 +17,6 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 })
 
-// For testing purposes, we'll use a local MySQL database
-// const pool = mysql.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '1234',
-//   database: 'SevConnector',
-// })
-
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json())
 
@@ -31,16 +24,15 @@ app.use(bodyParser.json())
 
 // Login route
 router.post('/login', async (req, res) => {
-  const { email, password, company_id } = req.body
+  const { email, password } = req.body
 
   try {
     // Retrieve user from the database
     const connection = await pool.getConnection()
     const [rows] = await connection.execute(
-      'SELECT * FROM users WHERE email = ? AND company_id = ?',
-      [email, company_id]
+      'SELECT * FROM users WHERE email = ?',
+      [email]
     )
-
     connection.release() // Release the connection back to the pool
     const user = rows[0]
 
@@ -55,13 +47,9 @@ router.post('/login', async (req, res) => {
     }
 
     // Generate a JWT token using the secret key from process.env
-    const token = jwt.sign(
-      { id: user.id, role: user.role, company_id: user.company_id },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: '1h',
-      }
-    )
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    })
 
     // Send the token to the client
     res.status(200).json({ message: 'Login successful', token })

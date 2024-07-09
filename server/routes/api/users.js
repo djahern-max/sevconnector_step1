@@ -13,9 +13,9 @@ const router = express.Router()
 
 // POST endpoint for registering a new user
 router.post('/register', async (req, res) => {
-  const { name, email, password, role, company_id } = req.body
+  const { name, email, password } = req.body
 
-  if (!(name && email && password && role && company_id)) {
+  if (!(name && email && password)) {
     return res.status(400).send('All input is required')
   }
 
@@ -38,8 +38,8 @@ router.post('/register', async (req, res) => {
 
     // Insert new user into the database
     const [result] = await conn.query(
-      'INSERT INTO users (name, email, password, role, company_id) VALUES (?, ?, ?, ?, ?)',
-      [name, email, hashedPassword, role, company_id]
+      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+      [name, email, hashedPassword]
     )
 
     // Create JWT token

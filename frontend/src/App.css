@@ -295,7 +295,7 @@ button {
 }
 
 .table th {
-  background: var(--light-color);
+  background: var (--light-color);
 }
 
 /* Navbar */
@@ -610,5 +610,208 @@ button {
   .post a,
   .post button {
     padding: 0.3rem 0.4rem;
+  }
+}
+
+/* Flex container to center form vertically and horizontally */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 50px); /* Full viewport height minus buffer */
+}
+
+/* Container surrounding the form */
+.form-container {
+  max-width: 400px; /* Adjusted maximum width of the form */
+  width: 90%; /* Ensures the form is responsive */
+  margin: 25px auto; /* Centering the form horizontally and vertically with 25px buffer */
+  padding: 20px; /* Adjusted padding */
+  background: rgb(219, 218, 218); /* Light grey background */
+  border-radius: 10px; /* Slightly larger rounded corners for a softer look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
+  border: 1px solid #eaeaea; /* Subtle border for refined edge */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  font-size: 1.5rem; /* Match the font size to other elements */
+}
+
+/* Each form field (paragraph + select) */
+.form-field {
+  margin-bottom: 15px; /* Slightly reduced space between form fields */
+  width: 100%; /* Full width of the container */
+}
+
+/* Paragraph tags used as labels */
+.form-label {
+  font-size: 1.5rem; /* Adjusted font size for readability */
+  color: #2c3e50; /* A deep blue-grey for more contrast */
+  margin-bottom: 5px; /* Reduced space between label and select box */
+  font-weight: 900; /* Medium font weight for emphasis */
+  text-align: center;
+}
+
+/* Style for the select elements */
+.form-select {
+  width: 100%; /* Full width of its container */
+  padding: 8px 10px; /* Reduced padding for a sleeker look */
+  border: 2px solid #eaeaea; /* Thicker border in a very light grey */
+  border-radius: 8px; /* Uniform rounded corners */
+  background-color: white; /* White background for the dropdown */
+  font-size: 1.5rem; /* Keeping the font size consistent */
+  color: #34495e; /* Darker grey for text */
+  -webkit-appearance: none; /* Removing default styles for consistency */
+  -moz-appearance: none; /* Removing default styles for consistency */
+  appearance: none; /* Removing default styles for consistency */
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ecf0f1, #ecf0f1); /* Custom arrow with gradient */
+  background-position: calc(100% - 15px) center, calc(100% - 10px) center,
+    100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5px 100%;
+  background-repeat: no-repeat;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for interactive elements */
+}
+
+/* Hover effects for select elements */
+.form-select:hover {
+  border-color: #bdc3c7; /* Lighter grey on hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth on hover */
+}
+
+/* Focus effects for select elements */
+.form-select:focus {
+  border-color: #3498db; /* Vibrant blue border for focus */
+  box-shadow: 0 2px 8px rgba(50, 150, 233, 0.2); /* Soft blue glow */
+  outline: none; /* Removing the default outline for aesthetics */
+}
+
+/* Button Styling */
+.form-button {
+  padding: 12px 25px; /* Increased padding for a larger, more clickable area */
+  font-size: 1.5rem; /* Clear and readable text size */
+  font-weight: bold; /* Bold text for emphasis */
+  color: white; /* White text for high contrast */
+  background-color: rgb(16, 70, 16); /* Dark green background */
+  border: none; /* No border for a cleaner look */
+  border-radius: 8px; /* Rounded corners for a modern aesthetic */
+  cursor: pointer; /* Indicates the element is clickable */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactive effects */
+  outline: none; /* Removes outline to maintain style on focus */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  margin: 28px auto 10px; /* Adjust margin to center the button */
+  display: block; /* Ensure the button takes up the full width available */
+}
+
+/* Hover State */
+.form-button:hover {
+  background-color: rgba(
+    23,
+    25,
+    27,
+    0.2
+  ); /* A slightly darker shade of green on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow for a "lifted" effect */
+}
+
+/* Focus State */
+.form-button:focus {
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3); /* Green shadow to match button color for focus */
+}
+
+/* Active State */
+.form-button:active {
+  background-color: rgb(
+    61,
+    109,
+    75
+  ); /* Even darker green for an active (pressed) state */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Lower shadow to simulate the button being pressed */
+}
+
+/* Logout Button */
+.logout-button {
+  padding: 12px 25px; /* Increased padding for a larger, more clickable area */
+  font-size: 1rem; /* Clear and readable text size */
+  font-weight: bold; /* Bold text for emphasis */
+  color: white; /* White text for high contrast */
+  background-color: rgb(16, 70, 16); /* Dark green background */
+  border: none; /* No border for a cleaner look */
+  border-radius: 8px; /* Rounded corners for a modern aesthetic */
+  cursor: pointer; /* Indicates the element is clickable */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions for interactive effects */
+  outline: none; /* Removes outline to maintain style on focus */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  margin: 28px auto 10px; /* Adjust margin to center the button */
+  display: block; /* Ensure the button takes up the full width available */
+  text-align: center; /* Center text inside the button */
+}
+
+/* Hover State */
+.logout-button:hover {
+  background-color: rgba(
+    23,
+    25,
+    27,
+    0.2
+  ); /* A slightly darker shade of green on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow for a "lifted" effect */
+}
+
+/* Focus State */
+.logout-button:focus {
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3); /* Green shadow to match button color for focus */
+}
+
+/* Active State */
+.logout-button:active {
+  background-color: rgb(
+    61,
+    109,
+    75
+  ); /* Even darker green for an active (pressed) state */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Lower shadow to simulate the button being pressed */
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .form-container {
+    max-width: 95%; /* Ensure the form container takes almost full width but not too wide */
+    padding: 20px; /* Adjust padding for smaller screens */
+    margin: 25px auto; /* Adjust margin for smaller screens */
+  }
+
+  .form-label {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .form-select,
+  .form-button,
+  input[type="text"] {
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+    margin: 25px;
+  }
+
+  .form-label {
+    font-size: 1.5rem; /* Further adjust font size for very small screens */
+  }
+
+  .form-select,
+  .form-button,
+  input[type="text"] {
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+
+  .form-button {
+    padding: 12px 25px; /* Adjust button padding */
   }
 }

@@ -8,11 +8,9 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
-    role: "",
-    company_id: "",
   });
 
-  const { name, email, password, password2, role, company_id } = formData;
+  const { name, email, password, password2 } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -77,42 +75,6 @@ const Register = () => {
             onChange={onChange}
           />
         </div>
-        {/* <div className="form-group">
-          <input
-            type="text "
-            placeholder="role"
-            name="role"
-            value={role}
-            onChange={onChange}
-          />
-        </div> */}
-        <select value={role} onChange={onChange} name="role" required>
-          <option value="">Select Role</option>
-          <option value="driver">Driver</option>
-          <option value="superintendent">Superintendent</option>
-          <option value="office">Office</option>
-        </select>
-
-        {/* <div className="form-group">
-          <input
-            type="text"
-            placeholder="company_id"
-            name="company_id"
-            value={company_id}
-            onChange={onChange}
-          />
-        </div> */}
-        <div className="form-group">
-          <input
-            type="text"
-            value={company_id}
-            onChange={onChange}
-            placeholder="Company ID"
-            name="company_id"
-            required
-          />
-        </div>
-
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
