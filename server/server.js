@@ -188,7 +188,7 @@ app.post('/api/phasecode', (req, res) => {
 })
 
 app.get('/api/phasecode', (req, res) => {
-  const sql = 'SELECT * FROM phasecode'
+  const sql = 'SELECT * FROM phasecode ORDER BY phaseCode ASC'
   db.query(sql, (error, results) => {
     if (error) {
       console.error('Error fetching phasecode: ', error)

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 
 const Register = () => {
@@ -11,6 +11,7 @@ const Register = () => {
   });
 
   const { name, email, password, password2 } = formData;
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,6 +22,7 @@ const Register = () => {
       .post("/api/users/register", formData)
       .then((response) => {
         alert("Data submitted successfully");
+        navigate("/Login"); // Use navigate to redirect
       })
       .catch((error) => {
         console.log(formData);
