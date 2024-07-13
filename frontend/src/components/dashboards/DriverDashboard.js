@@ -21,7 +21,7 @@ const DriverDashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/material")
+      .get("http://localhost:3001/api/material")
       .then((response) => {
         console.log("Materials data:", response.data);
         setMaterials(response.data);
@@ -31,7 +31,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:4000/api/job")
+      .get("http://localhost:3001/api/job")
       .then((response) => {
         console.log("Jobs data:", response.data);
         setJobs(response.data);
@@ -41,7 +41,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:4000/api/loadcount")
+      .get("http://localhost:3001/api/loadcount")
       .then((response) => {
         console.log("Loadcounts data:", response.data);
         setLoadcount(response.data);
@@ -51,7 +51,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:4000/api/phasecode")
+      .get("http://localhost:3001/api/phasecode")
       .then((response) => {
         console.log("Phase codes data:", response.data);
         setPhaseCodes(response.data);
@@ -74,7 +74,7 @@ const DriverDashboard = () => {
     console.log("Form data:", formData);
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/delivery",
+        "http://localhost:3001/api/delivery",
         formData
       );
       console.log("Server response:", response);
@@ -103,7 +103,7 @@ const DriverDashboard = () => {
             value={formData.hauledFrom}
             onChange={handleChange}
           >
-            <option value="">Where did you pick up?</option>
+            <option value="">Where From?</option>
             {jobs.length > 0 ? (
               jobs.map((item, index) => (
                 <option key={index} value={item.job_number}>
@@ -122,7 +122,7 @@ const DriverDashboard = () => {
             value={formData.hauledTo}
             onChange={handleChange}
           >
-            <option value="">Where did you deliver?</option>
+            <option value="">Where To?</option>
             {jobs.length > 0 ? (
               jobs.map((item, index) => (
                 <option key={index} value={item.job_number}>
@@ -141,7 +141,7 @@ const DriverDashboard = () => {
             value={formData.material}
             onChange={handleChange}
           >
-            <option value="">What type of material?</option>
+            <option value="">What Type?</option>
             {materials.length > 0 ? (
               materials.map((item, index) => (
                 <option key={index} value={item.item_code}>
@@ -179,7 +179,7 @@ const DriverDashboard = () => {
             value={formData.phaseCode}
             onChange={handleChange}
           >
-            <option value="">Which Phase Code?</option>
+            <option value="">Which Phase?</option>
             {phaseCodes.length > 0 ? (
               phaseCodes.map((item, index) => (
                 <option key={index} value={item.phaseCode}>

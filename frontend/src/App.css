@@ -693,7 +693,7 @@ button {
   font-size: 1.5rem; /* Clear and readable text size */
   font-weight: bold; /* Bold text for emphasis */
   color: white; /* White text for high contrast */
-  background-color: rgb(16, 70, 16); /* Dark green background */
+  background-color: #343a40; /* Dark green background */
   border: none; /* No border for a cleaner look */
   border-radius: 8px; /* Rounded corners for a modern aesthetic */
   cursor: pointer; /* Indicates the element is clickable */
@@ -736,7 +736,7 @@ button {
   font-size: 1rem; /* Clear and readable text size */
   font-weight: bold; /* Bold text for emphasis */
   color: white; /* White text for high contrast */
-  background-color: rgb(16, 70, 16); /* Dark green background */
+  background-color: #343a40;
   border: none; /* No border for a cleaner look */
   border-radius: 8px; /* Rounded corners for a modern aesthetic */
   cursor: pointer; /* Indicates the element is clickable */
