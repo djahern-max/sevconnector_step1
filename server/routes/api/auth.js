@@ -1,62 +1,92 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const mysql = require('mysql2/promise') // Use 'mysql2/promise' for async/await support
 const bcrypt = require('bcryptjs')
-require('dotenv').config()
+const mysql = require('mysql2')
+const config = require('../../config/db')
+const pool = mysql.createConnection(config.database)
 const jwt = require('jsonwebtoken')
-
-const app = express()
+require('dotenv').config()
+const authenticateToken = require('../../middleware/authenticateToken')
 
 const router = express.Router()
 
-// Create a MySQL connection pool
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-})
+// POST endpoint for registering a new user
+router.post('/register', async (req, res) => {
+  const { name, email, password, role } = req.body
 
-// Middleware to parse JSON request bodies
-app.use(bodyParser.json())
+  if (!(name && email && password && role)) {
+    return res.status(400).send('All input is required')
+  }
 
-// Create a MySQL connection pool
-
-// Login route
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body
+  const conn = pool.promise()
 
   try {
-    // Retrieve user from the database
-    const connection = await pool.getConnection()
-    const [rows] = await connection.execute(
+    // Check if user already exists
+    const [existingUser] = await conn.query(
       'SELECT * FROM users WHERE email = ?',
       [email]
     )
-    connection.release() // Release the connection back to the pool
-    const user = rows[0]
 
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' })
+    if (existingUser.length > 0) {
+      return res.status(409).send('A user with this email already exists.')
     }
 
-    // Compare the provided password with the hashed password
-    const passwordMatch = await bcrypt.compare(password, user.password)
-    if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid credentials' })
-    }
+    // Hash password
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
 
-    // Generate a JWT token using the secret key from process.env
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    })
+    // Insert new user into the database
+    const [result] = await conn.query(
+      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+      [name, email, hashedPassword, role]
+    )
 
-    // Send the token to the client
-    res.status(200).json({ message: 'Login successful', token })
+    // Create JWT token
+    const token = jwt.sign(
+      { user_id: result.insertId, email, role },
+      process.env.JWT_SECRET,
+      { expiresIn: '2h' }
+    )
+
+    // Send the new user's token
+    res.status(201).json({ token })
   } catch (error) {
-    console.error('Error during login:', error)
-    res.status(500).json({ message: 'Internal server error' })
+    console.error(error)
+    res.status(500).send('Internal Server Error')
   }
+})
+
+// Login endpoint
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body
+  const conn = pool.promise()
+
+  try {
+    // Fetch user
+    const [rows] = await conn.query('SELECT * FROM users WHERE email = ?', [
+      email,
+    ])
+    if (rows.length === 0) return res.status(400).send('User not found')
+
+    const user = rows[0]
+    const validPassword = await bcrypt.compare(password, user.password)
+    if (!validPassword) return res.status(400).send('Invalid password')
+
+    const token = jwt.sign(
+      { user_id: user.id, email: user.email, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '2h' }
+    )
+
+    res.json({ token, role: user.role })
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error')
+  }
+})
+
+// Example protected route using the middleware
+router.get('/me', authenticateToken, (req, res) => {
+  res.json({ message: 'Accessed my profile', user: req.user })
 })
 
 module.exports = router
