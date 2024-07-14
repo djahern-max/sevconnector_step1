@@ -1,14 +1,14 @@
 import React from "react";
-import AssignDriver from "../assignments/AssignDriver";
 import ViewAssignments from "../assignments/ViewAssignments";
+import AssignDriver from "../assignments/AssignDriver";
 
-const OfficeDashboard = ({ companyCode }) => {
+const OfficeDashboard = () => {
+  const companyCode = "SEV"; // Replace this with the actual company code if it's dynamic
+
   return (
     <div>
-      <h1>Office Dashboard</h1>
       <AssignDriver companyCode={companyCode} />
       <ViewAssignments companyCode={companyCode} />
-      {/* Add more components as needed */}
     </div>
   );
 };

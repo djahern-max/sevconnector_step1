@@ -33,10 +33,10 @@ const AssignDriver = ({ companyCode }) => {
   const handleAssign = async () => {
     try {
       await axios.post("/api/driverAssignments/assign", {
-        superId,
-        driverId,
+        super_id: superId,
+        driver_id: driverId,
         company_code: companyCode,
-      }); // Use company_code
+      });
       alert("Driver assigned to Super successfully");
     } catch (error) {
       console.error("Error assigning driver:", error);

@@ -6,9 +6,18 @@ const ViewAssignments = ({ companyCode }) => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
+    console.log("Company code received in ViewAssignments:", companyCode);
+
     const fetchAssignments = async () => {
       try {
-        const response = await axios.get(`/api/assignments/${companyCode}`);
+        if (!companyCode) {
+          console.error("Company code is undefined");
+          return;
+        }
+
+        const response = await axios.get("/api/driverAssignments/assignments", {
+          params: { company_code: companyCode },
+        });
         setAssignments(response.data);
       } catch (error) {
         console.error("Error fetching assignments:", error);
@@ -21,30 +30,24 @@ const ViewAssignments = ({ companyCode }) => {
   return (
     <div className={styles.viewAssignmentsContainer}>
       <h2>View Assignments</h2>
-      {assignments.length > 0 ? (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Super Name</th>
-              <th>Driver Name</th>
-              <th>Company Code</th>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Super</th>
+            <th>Driver</th>
+            <th>Company Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          {assignments.map((assignment) => (
+            <tr key={assignment.id}>
+              <td>{assignment.super_name}</td>
+              <td>{assignment.driver_name}</td>
+              <td>{assignment.company_code}</td>
             </tr>
-          </thead>
-          <tbody>
-            {assignments.map((assignment) => (
-              <tr key={assignment.id}>
-                <td>{assignment.super_name}</td>
-                <td>{assignment.driver_name}</td>
-                <td>{assignment.company_code}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className={styles.noAssignments}>
-          No assignments found for this company.
-        </p>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
