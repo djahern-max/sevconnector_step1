@@ -73,4 +73,32 @@ router.post('/assign', async (req, res) => {
   }
 })
 
+// Get assignments by company code
+router.get('/assignments', async (req, res) => {
+  const { company_code } = req.query
+
+  console.log('Received company_code:', company_code)
+
+  if (!company_code) {
+    return res.status(400).json({ error: 'Company code is required' })
+  }
+
+  const conn = db.promise()
+
+  try {
+    const [rows] = await conn.query(
+      `SELECT a.id, u1.name AS super_name, u2.name AS driver_name, a.company_code
+       FROM assignments a
+       JOIN users u1 ON a.super_id = u1.id
+       JOIN users u2 ON a.driver_id = u2.id
+       WHERE a.company_code = ?`,
+      [company_code]
+    )
+    res.status(200).json(rows)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Database error', details: error.message })
+  }
+})
+
 module.exports = router
