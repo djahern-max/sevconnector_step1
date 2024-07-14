@@ -18,6 +18,7 @@ const ViewAssignments = ({ companyCode }) => {
         const response = await axios.get("/api/driverAssignments/assignments", {
           params: { company_code: companyCode },
         });
+        console.log("Assignments fetched:", response.data);
         setAssignments(response.data);
       } catch (error) {
         console.error("Error fetching assignments:", error);
