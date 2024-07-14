@@ -90,13 +90,11 @@ const DriverDashboard = () => {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <img src={Sev_Logo} alt="Severino Logo" />
-        <div className="form-field">
+    <div className="container_driver">
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-group">
           <p className="form-label">Hauled From:</p>
           <select
-            className="form-select"
             name="hauledFrom"
             id="hauledFrom"
             value={formData.hauledFrom}
@@ -113,9 +111,10 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
+        </div>
+        <div className="form-group">
           <p className="form-label">Hauled To:</p>
           <select
-            className="form-select"
             name="hauledTo"
             id="hauledTo"
             value={formData.hauledTo}
@@ -132,9 +131,10 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
+        </div>
+        <div className="form-group">
           <p className="form-label">Material:</p>
           <select
-            className="form-select"
             name="material"
             id="material"
             value={formData.material}
@@ -151,12 +151,13 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
+        </div>
+        <div className="form-group">
           <p className="form-label">Quantity:</p>
           <select
-            className="form-select"
             name="quantity"
             id="quantity"
-            value={formData.phaseCodes}
+            value={formData.quantity}
             onChange={handleChange}
           >
             <option value="">How much?</option>
@@ -170,9 +171,10 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
+        </div>
+        <div className="form-group">
           <p className="form-label">Phase Code:</p>
           <select
-            className="form-select"
             name="phaseCode"
             id="phaseCode"
             value={formData.phaseCode}
@@ -189,14 +191,14 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-          <button type="submit" className="form-button">
-            Submit Delivery
-          </button>
         </div>
+        <button type="submit" className="logout-button">
+          Submit Delivery
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          <i className="fas fa-sign-out-alt" /> Logout
+        </button>
       </form>
-      <button className="logout-button" onClick={handleLogout}>
-        <i className="fas fa-sign-out-alt" /> Logout
-      </button>
     </div>
   );
 };

@@ -44,6 +44,16 @@ img {
   margin-bottom: 3rem;
 }
 
+.container_driver {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  position: relative; /* Ensure relative positioning for the container */
+}
+
 /* Text Styles*/
 .x-large {
   font-size: 4rem;
@@ -736,7 +746,7 @@ button {
   font-size: 1rem; /* Clear and readable text size */
   font-weight: bold; /* Bold text for emphasis */
   color: white; /* White text for high contrast */
-  background-color: #343a40;
+  background-color: #119c8c;
   border: none; /* No border for a cleaner look */
   border-radius: 8px; /* Rounded corners for a modern aesthetic */
   cursor: pointer; /* Indicates the element is clickable */
