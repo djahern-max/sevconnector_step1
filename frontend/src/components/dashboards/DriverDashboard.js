@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../../HaulFormContent.css";
 import { useNavigate } from "react-router-dom";
 import Sev_Logo from "../../img/Sev_Logo.png";
 
