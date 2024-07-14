@@ -637,7 +637,7 @@ button {
   width: 90%; /* Ensures the form is responsive */
   margin: 25px auto; /* Centering the form horizontally and vertically with 25px buffer */
   padding: 20px; /* Adjusted padding */
-  background: white;
+  background: #f0f0f0;
   border-radius: 10px; /* Slightly larger rounded corners for a softer look */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
   border: 1px solid #eaeaea; /* Subtle border for refined edge */

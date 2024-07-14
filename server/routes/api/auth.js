@@ -11,9 +11,9 @@ const router = express.Router()
 
 // POST endpoint for registering a new user
 router.post('/register', async (req, res) => {
-  const { name, email, password, role } = req.body
+  const { name, email, password, role, company_code } = req.body
 
-  if (!(name && email && password && role)) {
+  if (!(name && email && password && role && company_code)) {
     return res.status(400).send('All input is required')
   }
 
@@ -36,13 +36,13 @@ router.post('/register', async (req, res) => {
 
     // Insert new user into the database
     const [result] = await conn.query(
-      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
-      [name, email, hashedPassword, role]
+      'INSERT INTO users (name, email, password, role, company_code) VALUES (?, ?, ?, ?, ?)',
+      [name, email, hashedPassword, role, company_code]
     )
 
     // Create JWT token
     const token = jwt.sign(
-      { user_id: result.insertId, email, role },
+      { user_id: result.insertId, email, role, company_code },
       process.env.JWT_SECRET,
       { expiresIn: '2h' }
     )
@@ -72,7 +72,12 @@ router.post('/login', async (req, res) => {
     if (!validPassword) return res.status(400).send('Invalid password')
 
     const token = jwt.sign(
-      { user_id: user.id, email: user.email, role: user.role },
+      {
+        user_id: user.id,
+        email: user.email,
+        role: user.role,
+        company_code: user.company_code,
+      },
       process.env.JWT_SECRET,
       { expiresIn: '2h' }
     )

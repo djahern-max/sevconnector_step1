@@ -1,5 +1,3 @@
-// src/components/auth/Register.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,9 +9,10 @@ const Register = () => {
     password: "",
     password2: "",
     role: "Driver", // Default role, adjust as needed
+    company_code: "", // Add company_code to the form data
   });
 
-  const { name, email, password, password2, role } = formData;
+  const { name, email, password, password2, role, company_code } = formData;
   const navigate = useNavigate();
 
   const onChange = (e) =>
@@ -37,10 +36,20 @@ const Register = () => {
       localStorage.setItem("token", response.data.token);
       navigate("/login");
     } catch (error) {
-      if (error.response && error.response.status === 409) {
-        alert("A user with this email already exists.");
+      if (error.response) {
+        console.error("Error response data:", error.response.data);
+        console.error("Error response status:", error.response.status);
+        console.error("Error response headers:", error.response.headers);
+        if (error.response.status === 409) {
+          alert("A user with this email already exists.");
+        } else {
+          alert("Failed to register user");
+        }
+      } else if (error.request) {
+        console.error("Error request:", error.request);
+        alert("No response received from the server");
       } else {
-        console.error("Error registering user:", error);
+        console.error("Error message:", error.message);
         alert("Failed to register user");
       }
     }
@@ -96,6 +105,16 @@ const Register = () => {
             <option value="Super">Super</option>
             <option value="Office">Office</option>
           </select>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Company Code"
+            name="company_code"
+            value={company_code}
+            onChange={onChange}
+            required
+          />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>

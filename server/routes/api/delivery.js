@@ -24,7 +24,7 @@ db.connect((err) => {
 
 router.post('/', (req, res) => {
   const { hauledFrom, hauledTo, material, quantity, phaseCode } = req.body
-  const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity, phaseCode) VALUES (?, ?, ?, ?, ?)`
+  const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity, company_code) VALUES (?, ?, ?, ?, ?)`
 
   db.query(
     sql,
