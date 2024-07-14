@@ -633,11 +633,11 @@ button {
 
 /* Container surrounding the form */
 .form-container {
-  max-width: 400px; /* Adjusted maximum width of the form */
+  max-width: 500px; /* Adjusted maximum width of the form */
   width: 90%; /* Ensures the form is responsive */
   margin: 25px auto; /* Centering the form horizontally and vertically with 25px buffer */
   padding: 20px; /* Adjusted padding */
-  background: rgb(219, 218, 218); /* Light grey background */
+  background: white;
   border-radius: 10px; /* Slightly larger rounded corners for a softer look */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
   border: 1px solid #eaeaea; /* Subtle border for refined edge */
@@ -746,7 +746,7 @@ button {
   font-size: 1rem; /* Clear and readable text size */
   font-weight: bold; /* Bold text for emphasis */
   color: white; /* White text for high contrast */
-  background-color: #119c8c;
+  background-color: #343a40;
   border: none; /* No border for a cleaner look */
   border-radius: 8px; /* Rounded corners for a modern aesthetic */
   cursor: pointer; /* Indicates the element is clickable */

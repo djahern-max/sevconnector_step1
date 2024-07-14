@@ -20,7 +20,7 @@ const DriverDashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/material")
+      .get("/api/material")
       .then((response) => {
         console.log("Materials data:", response.data);
         setMaterials(response.data);
@@ -30,7 +30,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:3001/api/job")
+      .get("/api/job")
       .then((response) => {
         console.log("Jobs data:", response.data);
         setJobs(response.data);
@@ -40,7 +40,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:3001/api/loadcount")
+      .get("/api/loadcount")
       .then((response) => {
         console.log("Loadcounts data:", response.data);
         setLoadcount(response.data);
@@ -50,7 +50,7 @@ const DriverDashboard = () => {
       });
 
     axios
-      .get("http://localhost:3001/api/phasecode")
+      .get("/api/phasecode")
       .then((response) => {
         console.log("Phase codes data:", response.data);
         setPhaseCodes(response.data);
@@ -72,10 +72,7 @@ const DriverDashboard = () => {
     e.preventDefault();
     console.log("Form data:", formData);
     try {
-      const response = await axios.post(
-        "http://localhost:3001/api/delivery",
-        formData
-      );
+      const response = await axios.post("/api/delivery", formData);
       console.log("Server response:", response);
       alert("Delivery has been submitted successfully");
     } catch (error) {
@@ -90,11 +87,13 @@ const DriverDashboard = () => {
   };
 
   return (
-    <div className="container_driver">
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        {/* <img src={Sev_Logo} alt="Severino Logo" /> */}
+        <div className="form-field">
           <p className="form-label">Hauled From:</p>
           <select
+            className="form-select"
             name="hauledFrom"
             id="hauledFrom"
             value={formData.hauledFrom}
@@ -111,10 +110,9 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-        </div>
-        <div className="form-group">
           <p className="form-label">Hauled To:</p>
           <select
+            className="form-select"
             name="hauledTo"
             id="hauledTo"
             value={formData.hauledTo}
@@ -131,10 +129,9 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-        </div>
-        <div className="form-group">
           <p className="form-label">Material:</p>
           <select
+            className="form-select"
             name="material"
             id="material"
             value={formData.material}
@@ -151,13 +148,12 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-        </div>
-        <div className="form-group">
           <p className="form-label">Quantity:</p>
           <select
+            className="form-select"
             name="quantity"
             id="quantity"
-            value={formData.quantity}
+            value={formData.phaseCodes}
             onChange={handleChange}
           >
             <option value="">How much?</option>
@@ -171,10 +167,9 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-        </div>
-        <div className="form-group">
           <p className="form-label">Phase Code:</p>
           <select
+            className="form-select"
             name="phaseCode"
             id="phaseCode"
             value={formData.phaseCode}
@@ -191,14 +186,14 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
+          <button type="submit" className="form-button">
+            Submit Delivery
+          </button>
         </div>
-        <button type="submit" className="logout-button">
-          Submit Delivery
-        </button>
-        <button className="logout-button" onClick={handleLogout}>
-          <i className="fas fa-sign-out-alt" /> Logout
-        </button>
       </form>
+      <button className="logout-button" onClick={handleLogout}>
+        <i className="fas fa-sign-out-alt" /> Logout
+      </button>
     </div>
   );
 };
