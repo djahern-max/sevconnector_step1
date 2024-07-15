@@ -1,58 +1,61 @@
-/* OfficeDashboard.module.css */
-.officeDashboardContainer {
+/* SimpleNavbar Styles */
+.simple-navbar {
   display: flex;
-  flex-direction: row;
-  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--dark-color);
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
-.sidebar {
-  width: 200px;
-  background-color: #2c3e50;
-  color: white;
+.simple-navbar-logo {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.simple-navbar-logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.simple-navbar-logo a:hover {
+  color: var(--primary-color);
+}
+
+.simple-navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
+  align-items: center;
 }
 
-.menuItem {
-  background: none;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: left;
-  cursor: pointer;
-  font-size: 16px;
+.simple-navbar-logout {
+  margin-left: auto;
 }
 
-.menuItem:hover {
-  background-color: #34495e;
+.simple-navbar-logout a {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
-.mainContent {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-  box-sizing: border-box;
+.simple-navbar-logout a:hover {
+  color: var(--primary-color);
 }
 
-/* Media queries for responsiveness */
+/* Hide elements on small screens except logout */
 @media (max-width: 768px) {
-  .officeDashboardContainer {
-    flex-direction: column;
+  .simple-navbar-logo,
+  .simple-navbar-list li:not(.simple-navbar-logout) {
+    display: none;
   }
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-  }
-
-  .mainContent {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .section {
-    margin-bottom: 20px;
+  .simple-navbar {
+    justify-content: flex-end; /* Align logout icon to the right on small screens */
   }
 }

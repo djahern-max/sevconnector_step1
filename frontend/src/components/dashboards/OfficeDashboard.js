@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ViewAssignments from "../assignments/ViewAssignments";
 import AssignDriver from "../assignments/AssignDriver";
-import Navbar from "../layout/Navbar"; // Import Navbar
+// import Navbar from "../layout/Navbar";
 import styles from "./OfficeDashboard.module.css";
 import axios from "axios";
 
@@ -40,7 +40,6 @@ const OfficeDashboard = () => {
 
   return (
     <>
-      <Navbar /> {/* Add Navbar component */}
       <div className={styles.officeDashboardContainer}>
         <div className={styles.sidebar}>
           <button className={styles.menuItem} onClick={toggleAssignDriver}>

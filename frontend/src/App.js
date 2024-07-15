@@ -1,5 +1,3 @@
-// src/App.js
-
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -8,12 +6,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import DriverDashboard from "./components/dashboards/DriverDashboard";
-import SuperDashboard from "./components/dashboards/SuperDashboard"; // Import SuperDashboard
-import OfficeDashboard from "./components/dashboards/OfficeDashboard"; // Import OfficeDashboard
+import SuperDashboard from "./components/dashboards/SuperDashboard";
+import OfficeDashboard from "./components/dashboards/OfficeDashboard";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Navbar from "./components/layout/Navbar";
+import SimpleNavbar from "./components/layout/SimpleNavbar"; // Import SimpleNavbar
 import "./App.css";
 
 const App = () => (
@@ -27,12 +26,16 @@ const Content = () => {
   const hideNavbarRoutes = [
     "/DriverDashboard",
     "/SuperDashboard",
-    // "/OfficeDashboard",
+    "/OfficeDashboard",
   ];
 
   return (
     <>
-      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+      {hideNavbarRoutes.includes(location.pathname) ? (
+        <SimpleNavbar />
+      ) : (
+        <Navbar />
+      )}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/register" element={<Register />} />

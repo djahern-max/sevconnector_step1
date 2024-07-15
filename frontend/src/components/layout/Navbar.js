@@ -18,10 +18,10 @@ const Navbar = () => {
         </Link>
       </h1>
       <ul>
-        <li>
+        <li className="hide-sm">
           <Link to="/register">Register</Link>
         </li>
-        <li>
+        <li className="hide-sm">
           <Link to="/login">Login</Link>
         </li>
         <li>

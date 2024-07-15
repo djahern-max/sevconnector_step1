@@ -1,8 +1,8 @@
 /* OfficeDashboard.module.css */
 .officeDashboardContainer {
+  padding-top: 62px;
   display: flex;
-  height: calc(100vh - 60px); /* Adjust height to account for fixed navbar */
-  margin-top: 60px; /* Adjust top margin to account for fixed navbar */
+  height: 100vh;
 }
 
 .sidebar {
