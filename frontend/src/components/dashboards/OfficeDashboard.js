@@ -51,22 +51,23 @@ const OfficeDashboard = () => {
           </button>
         </div>
         <div className={styles.mainContent}>
-          <div className={styles.section}>
-            {isAssignDriverVisible && (
+          {isAssignDriverVisible && (
+            <div className={styles.section}>
               <AssignDriver
                 companyCode={companyCode}
                 onAssignmentAdded={handleAssignmentAdded}
               />
-            )}
-          </div>
-          <div className={styles.section}>
-            {isViewAssignmentsVisible && (
+            </div>
+          )}
+          {isViewAssignmentsVisible && (
+            <div className={styles.section}>
               <ViewAssignments
+                companyCode={companyCode}
                 assignments={assignments}
                 onDeleteAssignment={fetchAssignments}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </>
