@@ -27,7 +27,7 @@ const Content = () => {
   const hideNavbarRoutes = [
     "/DriverDashboard",
     "/SuperDashboard",
-    "/OfficeDashboard",
+    // "/OfficeDashboard",
   ];
 
   return (
