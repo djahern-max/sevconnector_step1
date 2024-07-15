@@ -101,4 +101,28 @@ router.get('/assignments', async (req, res) => {
   }
 })
 
+// Delete assignment by ID
+router.delete('/assignments/:id', async (req, res) => {
+  const { id } = req.params
+
+  if (!id) {
+    return res.status(400).json({ error: 'Assignment ID is required' })
+  }
+
+  const conn = db.promise()
+
+  try {
+    const [result] = await conn.query('DELETE FROM assignments WHERE id = ?', [
+      id,
+    ])
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Assignment not found' })
+    }
+    res.status(200).json({ message: 'Assignment deleted successfully' })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Database error', details: error.message })
+  }
+})
+
 module.exports = router
