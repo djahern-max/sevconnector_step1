@@ -256,7 +256,7 @@ img {
 }
 
 .form input[type="text"],
-.form input[type="email"],
+.form input[type="username"],
 .form input[type="password"],
 .form input[type="date"],
 .form select,

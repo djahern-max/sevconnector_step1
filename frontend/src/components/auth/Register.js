@@ -5,14 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    username: "",
     password: "",
     password2: "",
     role: "Driver", // Default role, adjust as needed
     company_code: "", // Add company_code to the form data
   });
 
-  const { name, email, password, password2, role, company_code } = formData;
+  const { name, username, password, password2, role, company_code } = formData;
   const navigate = useNavigate();
 
   const onChange = (e) =>
@@ -41,7 +41,7 @@ const Register = () => {
         console.error("Error response status:", error.response.status);
         console.error("Error response headers:", error.response.headers);
         if (error.response.status === 409) {
-          alert("A user with this email already exists.");
+          alert("A user with this username already exists.");
         } else {
           alert("Failed to register user");
         }
@@ -71,10 +71,10 @@ const Register = () => {
         </div>
         <div className="form-group">
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
+            type="username"
+            placeholder="username"
+            name="username"
+            value={username}
             onChange={onChange}
             required
           />

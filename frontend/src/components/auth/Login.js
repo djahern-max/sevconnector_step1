@@ -5,14 +5,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const userData = { email, password };
+    const userData = { username, password };
 
     try {
       const response = await axios.post("/api/users/login", userData, {
@@ -57,11 +57,11 @@ const Login = () => {
       <form className="form" onSubmit={handleLogin}>
         <div className="form-group">
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="username"
+            placeholder="username"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>

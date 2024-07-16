@@ -11,9 +11,9 @@ const router = express.Router()
 
 // POST endpoint for registering a new user
 router.post('/register', async (req, res) => {
-  const { name, email, password, role, company_code } = req.body
+  const { name, username, password, role, company_code } = req.body
 
-  if (!(name && email && password && role && company_code)) {
+  if (!(name && username && password && role && company_code)) {
     return res.status(400).send('All input is required')
   }
 
@@ -22,12 +22,12 @@ router.post('/register', async (req, res) => {
   try {
     // Check if user already exists
     const [existingUser] = await conn.query(
-      'SELECT * FROM users WHERE email = ?',
-      [email]
+      'SELECT * FROM users WHERE username = ?',
+      [username]
     )
 
     if (existingUser.length > 0) {
-      return res.status(409).send('A user with this email already exists.')
+      return res.status(409).send('A user with this username already exists.')
     }
 
     // Hash password
@@ -36,13 +36,13 @@ router.post('/register', async (req, res) => {
 
     // Insert new user into the database
     const [result] = await conn.query(
-      'INSERT INTO users (name, email, password, role, company_code) VALUES (?, ?, ?, ?, ?)',
-      [name, email, hashedPassword, role, company_code]
+      'INSERT INTO users (name, username, password, role, company_code) VALUES (?, ?, ?, ?, ?)',
+      [name, username, hashedPassword, role, company_code]
     )
 
     // Create JWT token
     const token = jwt.sign(
-      { user_id: result.insertId, email, role, company_code },
+      { user_id: result.insertId, username, role, company_code },
       process.env.JWT_SECRET,
       { expiresIn: '2h' }
     )
@@ -57,13 +57,13 @@ router.post('/register', async (req, res) => {
 
 // Login endpoint
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body
+  const { username, password } = req.body
   const conn = pool.promise()
 
   try {
     // Fetch user
-    const [rows] = await conn.query('SELECT * FROM users WHERE email = ?', [
-      email,
+    const [rows] = await conn.query('SELECT * FROM users WHERE username = ?', [
+      username,
     ])
     if (rows.length === 0) return res.status(400).send('User not found')
 
@@ -74,7 +74,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       {
         user_id: user.id,
-        email: user.email,
+        username: user.username,
         role: user.role,
         company_code: user.company_code,
       },
