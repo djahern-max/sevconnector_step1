@@ -77,6 +77,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/*SuperDashboard CSS*/
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .officeDashboardContainer {
