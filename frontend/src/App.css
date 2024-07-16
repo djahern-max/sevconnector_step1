@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #119c8c;
+  --primary-color: #129eb4;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -54,7 +54,7 @@ img {
   position: relative; /* Ensure relative positioning for the container */
 }
 
-/* Text Styles */
+/* Text Styles*/
 .x-large {
   font-size: 4rem;
   line-height: 1.2;
@@ -319,8 +319,8 @@ button {
   width: 100%;
   top: 0;
   border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
-  height: 60px; /* Set a fixed height */
+  background-color: rgba(52, 58, 64, 0.9); /* dark-color with opacity */
+  color: #fff;
 }
 
 .navbar ul {
@@ -339,6 +339,99 @@ button {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
+}
+
+/* SimpleNavbar Styles */
+.simple-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(52, 58, 64, 0.9); /* dark-color with 0.9 opacity */
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.simple-navbar-logo {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.simple-navbar-logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.simple-navbar-logo a:hover {
+  color: var(--primary-color);
+}
+
+.simple-navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.simple-navbar-list li {
+  margin-right: 1rem; /* Add spacing between items */
+}
+
+.simple-navbar-logout {
+  margin-left: auto;
+}
+
+.simple-navbar-logout a {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.simple-navbar-logout a:hover {
+  color: var(--primary-color);
+}
+
+/* Hide elements on small screens except logout */
+@media (max-width: 768px) {
+  .simple-navbar-logo,
+  .simple-navbar-list li:not(.simple-navbar-logout) {
+    display: none;
+  }
+
+  .simple-navbar {
+    justify-content: flex-end; /* Align logout icon to the right on small screens */
+  }
+}
+
+/* Hide elements on small screens except logout */
+@media (max-width: 768px) {
+  .simple-navbar-logo,
+  .simple-navbar-list li:not(.simple-navbar-logout) {
+    display: none;
+  }
+
+  .simple-navbar {
+    justify-content: flex-end; /* Align logout icon to the right on small screens */
+  }
+}
+
+/* Hide elements on small screens except logout */
+@media (max-width: 768px) {
+  .simple-navbar-logo a {
+    display: inline; /* Show the handshake logo */
+  }
+
+  .simple-navbar-list li:not(.simple-navbar-logout) {
+    display: none;
+  }
+
+  .simple-navbar {
+    justify-content: space-between; /* Align items evenly on small screens */
+  }
 }
 
 /* Landing Page */
@@ -563,7 +656,6 @@ button {
   .navbar {
     display: block;
     text-align: center;
-    height: 60px; /* Maintain fixed height */
   }
 
   .navbar ul {
@@ -804,10 +896,6 @@ button {
     padding: 10px; /* Adjust padding for smaller screens */
     font-size: 1.5rem; /* Adjust font size for smaller screens */
   }
-
-  .navbar {
-    height: 60px; /* Maintain fixed height */
-  }
 }
 
 @media (max-width: 480px) {
@@ -829,9 +917,5 @@ button {
 
   .form-button {
     padding: 12px 25px; /* Adjust button padding */
-  }
-
-  .navbar {
-    height: 60px; /* Maintain fixed height */
   }
 }

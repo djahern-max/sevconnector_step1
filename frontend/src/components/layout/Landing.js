@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -11,7 +12,7 @@ const Landing = () => {
             FIELD = ( <h2 className="fa-regular fa-handshake"></h2> ) = OFFICE
           </p>
           <div className="buttons">
-            {/* <Link to="/register" className="btn btn-primary">
+            <Link to="/register" className="btn btn-primary">
               Sign Up
             </Link>
             <Link
@@ -20,7 +21,7 @@ const Landing = () => {
             "
             >
               Login
-            </Link> */}
+            </Link>
           </div>
         </div>
       </div>
