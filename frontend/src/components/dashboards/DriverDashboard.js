@@ -80,15 +80,11 @@ const DriverDashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    console.log("User logged out");
-    navigate("/");
-  };
-
   return (
-    <div className="form-container">
+    <div className="form-container mt-5">
+      {" "}
+      {/* Added mt-5 class for top margin */}
       <form onSubmit={handleSubmit}>
-        {/* <img src={Sev_Logo} alt="Severino Logo" /> */}
         <div className="form-field">
           <p className="form-label">Hauled From:</p>
           <select
@@ -190,9 +186,6 @@ const DriverDashboard = () => {
           </button>
         </div>
       </form>
-      <button className="logout-button" onClick={handleLogout}>
-        <i className="fas fa-sign-out-alt" /> Logout
-      </button>
     </div>
   );
 };

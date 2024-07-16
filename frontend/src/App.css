@@ -741,6 +741,11 @@ button {
   font-size: 1.5rem; /* Match the font size to other elements */
 }
 
+/* Margin Utility Classes */
+.mt-5 {
+  margin-top: 3.5rem; /* Adjust the value as needed */
+}
+
 /* Each form field (paragraph + select) */
 .form-field {
   margin-bottom: 15px; /* Slightly reduced space between form fields */
@@ -886,6 +891,10 @@ button {
     margin: 25px auto; /* Adjust margin for smaller screens */
   }
 
+  .mt-5 {
+    margin-top: 3.5rem; /* Adjust the value as needed */
+  }
+
   .form-label {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
   }
@@ -902,6 +911,10 @@ button {
   .form-container {
     padding: 15px;
     margin: 25px;
+  }
+
+  .mt-5 {
+    margin-top: 3.5rem; /* Adjust the value as needed */
   }
 
   .form-label {
