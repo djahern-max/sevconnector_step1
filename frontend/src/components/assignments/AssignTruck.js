@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./AssignDriver.module.css";
+import styles from "./AssignDriver.module.css"; // Use a separate CSS if needed
 
 const AssignTruck = ({ companyCode }) => {
   const [trucks, setTrucks] = useState([]);
@@ -11,7 +11,7 @@ const AssignTruck = ({ companyCode }) => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const responseTrucks = await axios.get("/api/trucks", {
+        const responseTrucks = await axios.get("/api/truckAssignments/trucks", {
           params: { company_code: companyCode },
         });
         const responseDrivers = await axios.get(

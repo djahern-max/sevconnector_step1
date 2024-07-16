@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./ViewAssignments.module.css";
+import styles from "./ViewAssignments.module.css"; // Use a separate CSS if needed
 
 const ViewTruckAssignments = ({ companyCode }) => {
   const [assignments, setAssignments] = useState([]);
