@@ -8,7 +8,8 @@ const usersRoutes = require('./routes/api/users')
 const deliveryRoutes = require('./routes/api/delivery')
 const materialRoutes = require('./routes/api/material')
 const jobRoutes = require('./routes/api/job')
-const driverAssignmentsRoutes = require('./routes/api/driverAssignment') // Correct import
+const driverAssignmentsRoutes = require('./routes/api/driverAssignment')
+const truckAssignmentRoutes = require('./routes/api/truckAssignment') // Include the new truckAssignmentRoutes
 
 process.env.SUPPRESS_NO_CONFIG_WARNING = 'true'
 
@@ -31,9 +32,9 @@ app.use('/api/material', materialRoutes)
 app.use('/api/job', jobRoutes)
 app.use('/api/phasecode', jobRoutes)
 app.use('/api/driverAssignments', driverAssignmentsRoutes)
+app.use('/api/truckAssignments', truckAssignmentRoutes) // Mount the truckAssignmentRoutes
 
 // Connect Database
-
 const db = mysql.createConnection(config.database)
 
 db.connect((err) => {

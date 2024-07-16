@@ -1,8 +1,12 @@
-// Sidebar.js
 import React from "react";
 import styles from "./Sidebar.module.css";
 
-const Sidebar = ({ toggleAssignDriver, toggleViewAssignments }) => {
+const Sidebar = ({
+  toggleAssignDriver,
+  toggleViewAssignments,
+  toggleAssignTruck,
+  toggleViewTruckAssignments,
+}) => {
   return (
     <div className={styles.sidebar}>
       <button className={styles.menuItem} onClick={toggleAssignDriver}>
@@ -10,6 +14,12 @@ const Sidebar = ({ toggleAssignDriver, toggleViewAssignments }) => {
       </button>
       <button className={styles.menuItem} onClick={toggleViewAssignments}>
         View Assignments
+      </button>
+      <button className={styles.menuItem} onClick={toggleAssignTruck}>
+        Assign Truck
+      </button>
+      <button className={styles.menuItem} onClick={toggleViewTruckAssignments}>
+        View Truck Assignments
       </button>
     </div>
   );

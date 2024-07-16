@@ -1,16 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const cors = require('cors')
-require('dotenv').config()
 const mysql = require('mysql2')
 const config = require('../../config/db')
-
-const app = express()
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-)
 
 const db = mysql.createConnection(config.database)
 
