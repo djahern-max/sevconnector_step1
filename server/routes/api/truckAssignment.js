@@ -44,8 +44,23 @@ router.post('/assign', (req, res) => {
 
 // Route to get assignments
 router.get('/assignments', (req, res) => {
-  const query = 'SELECT * FROM driver_truck_assignments WHERE company_code = ?'
   const { company_code } = req.query
+  const query = `
+    SELECT 
+      dta.id,
+      t.truck_number,
+      t.truck_name,
+      u.name as driver_name,
+      dta.company_code
+    FROM 
+      driver_truck_assignments dta
+    JOIN 
+      trucks t ON dta.truck_id = t.id
+    JOIN 
+      users u ON dta.driver_id = u.id
+    WHERE 
+      dta.company_code = ?
+  `
 
   db.query(query, [company_code], (err, results) => {
     if (err) {
