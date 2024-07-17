@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./AssignDriver.module.css";
+import styles from "./ViewAssignments.module.css"; // Use the same CSS module
 
 const AssignDriver = ({ companyCode }) => {
   const [supers, setSupers] = useState([]);
@@ -12,12 +12,12 @@ const AssignDriver = ({ companyCode }) => {
     const fetchUsers = async () => {
       try {
         const responseSupers = await axios.get("/api/driverAssignments/users", {
-          params: { role: "Super", company_code: companyCode }, // Use company_code
+          params: { role: "Super", company_code: companyCode },
         });
         const responseDrivers = await axios.get(
           "/api/driverAssignments/users",
           {
-            params: { role: "Driver", company_code: companyCode }, // Use company_code
+            params: { role: "Driver", company_code: companyCode },
           }
         );
         setSupers(responseSupers.data);
@@ -76,7 +76,10 @@ const AssignDriver = ({ companyCode }) => {
           ))}
         </select>
       </div>
-      <button className={styles.button} onClick={handleAssign}>
+      <button
+        className={`btn btn-success ${styles.button}`}
+        onClick={handleAssign}
+      >
         Assign
       </button>
     </div>
