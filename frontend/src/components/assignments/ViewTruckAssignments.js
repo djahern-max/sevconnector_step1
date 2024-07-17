@@ -26,13 +26,20 @@ const ViewTruckAssignments = ({ companyCode }) => {
   }, [companyCode]);
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/truckAssignments/assignments/${id}`);
-      setAssignments(assignments.filter((assignment) => assignment.id !== id));
-      alert("Assignment deleted successfully");
-    } catch (error) {
-      console.error("Error deleting truck assignment:", error);
-      alert("Failed to delete truck assignment");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this assignment?"
+    );
+    if (confirmDelete) {
+      try {
+        await axios.delete(`/api/truckAssignments/assignments/${id}`);
+        setAssignments(
+          assignments.filter((assignment) => assignment.id !== id)
+        );
+        alert("Assignment deleted successfully");
+      } catch (error) {
+        console.error("Error deleting truck assignment:", error);
+        alert("Failed to delete truck assignment");
+      }
     }
   };
 
@@ -43,7 +50,7 @@ const ViewTruckAssignments = ({ companyCode }) => {
         <thead>
           <tr>
             <th>Truck Number</th>
-            <th>Truck Name</th>
+            <th className="hide-on-small">Truck Name</th>
             <th>Driver Name</th>
             <th className="hide-on-small">Company Code</th>
             <th>Action</th>
@@ -53,7 +60,7 @@ const ViewTruckAssignments = ({ companyCode }) => {
           {assignments.map((assignment) => (
             <tr key={assignment.id}>
               <td>{assignment.truck_number}</td>
-              <td>{assignment.truck_name}</td>
+              <td className="hide-on-small">{assignment.truck_name}</td>
               <td>{assignment.driver_name}</td>
               <td className="hide-on-small">{assignment.company_code}</td>
               <td>
