@@ -45,7 +45,7 @@ const ViewAssignments = ({ companyCode }) => {
             <th>Super</th>
             <th>Driver</th>
             <th>Company Code</th>
-            <th>Action</th>
+            <th className="hide-on-small">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +53,7 @@ const ViewAssignments = ({ companyCode }) => {
             <tr key={assignment.id}>
               <td>{assignment.super_name}</td>
               <td>{assignment.driver_name}</td>
-              <td>{assignment.company_code}</td>
+              <td className="hide-on-small">{assignment.company_code}</td>
               <td>
                 <button
                   className={styles.deleteButton}

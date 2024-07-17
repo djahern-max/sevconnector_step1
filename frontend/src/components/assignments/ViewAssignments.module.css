@@ -36,3 +36,9 @@
 .deleteButton:hover {
   background-color: #c0392b;
 }
+
+@media (max-width: 575.98px) {
+  .hide-on-small {
+    display: none;
+  }
+}

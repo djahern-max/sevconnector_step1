@@ -905,6 +905,10 @@ button {
     padding: 10px; /* Adjust padding for smaller screens */
     font-size: 1.5rem; /* Adjust font size for smaller screens */
   }
+
+  .hide-on-small {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {

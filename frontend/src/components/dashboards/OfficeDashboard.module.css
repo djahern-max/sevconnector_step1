@@ -6,13 +6,31 @@
 }
 
 .sidebar {
-  width: 200px;
+  width: 250px; /* Adjust this value to make the sidebar wider */
   background-color: #2c3e50; /* Dark blue background */
   color: white;
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  height: 100%; /* Ensures it takes up the full height of its container */
+  position: relative;
+}
+
+.sidebar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(44, 62, 80, 0),
+    rgba(44, 62, 80, 1)
+  );
+  pointer-events: none;
 }
 
 .menuItem {
@@ -32,6 +50,7 @@
 .mainContent {
   flex-grow: 1;
   padding: 20px;
+  padding-top: 74px; /* Add top padding equal to the navbar height */
   overflow-y: auto;
   box-sizing: border-box;
   background-color: #f4f4f4; /* Light background for the main content */
@@ -99,6 +118,7 @@
   .mainContent {
     width: 100%;
     padding: 10px;
+    padding-top: 64px; /* Adjust top padding for smaller screens */
   }
 
   .section {
