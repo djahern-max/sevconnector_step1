@@ -65,78 +65,76 @@ const OfficeDashboard = () => {
   };
 
   return (
-    <>
-      <div className={styles.officeDashboardContainer}>
-        <div className={styles.sidebar}>
-          <button className={styles.menuItem} onClick={toggleAssignDriver}>
-            Assign Driver
-          </button>
-          <button className={styles.menuItem} onClick={toggleViewAssignments}>
-            View Assignments
-          </button>
-          <button className={styles.menuItem} onClick={toggleAssignTruck}>
-            Assign Truck
-          </button>
-          <button
-            className={styles.menuItem}
-            onClick={toggleViewTruckAssignments}
-          >
-            View Truck Assignments
-          </button>
-        </div>
-        <div className={styles.mainContent}>
-          {isAssignDriverVisible && (
-            <div className={styles.section}>
-              <button className="btn btn-dark" onClick={toggleAssignDriver}>
-                Hide
-              </button>
-              <AssignDriver
-                companyCode={companyCode}
-                onAssignmentAdded={handleAssignmentAdded}
-              />
-            </div>
-          )}
-          {isViewAssignmentsVisible && (
-            <div className={styles.section}>
-              <button className="btn btn-dark" onClick={toggleViewAssignments}>
-                Hide
-              </button>
-              <ViewAssignments
-                companyCode={companyCode}
-                assignments={assignments}
-                onDeleteAssignment={fetchAssignments}
-              />
-            </div>
-          )}
-          {isAssignTruckVisible && (
-            <div className={styles.section}>
-              <button className="btn btn-dark" onClick={toggleAssignTruck}>
-                Hide
-              </button>
-              <AssignTruck
-                companyCode={companyCode}
-                onAssignmentAdded={handleAssignmentAdded}
-              />
-            </div>
-          )}
-          {isViewTruckAssignmentsVisible && (
-            <div className={styles.section}>
-              <button
-                className="btn btn-dark"
-                onClick={toggleViewTruckAssignments}
-              >
-                Hide
-              </button>
-              <ViewTruckAssignments
-                companyCode={companyCode}
-                assignments={truckAssignments}
-                onDeleteAssignment={fetchTruckAssignments}
-              />
-            </div>
-          )}
-        </div>
+    <div className={styles.officeDashboardContainer}>
+      <div className={styles.sidebar}>
+        <button className={styles.menuItem} onClick={toggleAssignDriver}>
+          Assign Driver
+        </button>
+        <button className={styles.menuItem} onClick={toggleViewAssignments}>
+          View Assignments
+        </button>
+        <button className={styles.menuItem} onClick={toggleAssignTruck}>
+          Assign Truck
+        </button>
+        <button
+          className={styles.menuItem}
+          onClick={toggleViewTruckAssignments}
+        >
+          View Truck Assignments
+        </button>
       </div>
-    </>
+      <div className={styles.mainContent}>
+        {isAssignDriverVisible && (
+          <div className={styles.section}>
+            <button className="btn btn-dark" onClick={toggleAssignDriver}>
+              Hide
+            </button>
+            <AssignDriver
+              companyCode={companyCode}
+              onAssignmentAdded={handleAssignmentAdded}
+            />
+          </div>
+        )}
+        {isViewAssignmentsVisible && (
+          <div className={styles.section}>
+            <button className="btn btn-dark" onClick={toggleViewAssignments}>
+              Hide
+            </button>
+            <ViewAssignments
+              companyCode={companyCode}
+              assignments={assignments}
+              onDeleteAssignment={fetchAssignments}
+            />
+          </div>
+        )}
+        {isAssignTruckVisible && (
+          <div className={styles.section}>
+            <button className="btn btn-dark" onClick={toggleAssignTruck}>
+              Hide
+            </button>
+            <AssignTruck
+              companyCode={companyCode}
+              onAssignmentAdded={handleAssignmentAdded}
+            />
+          </div>
+        )}
+        {isViewTruckAssignmentsVisible && (
+          <div className={styles.section}>
+            <button
+              className="btn btn-dark"
+              onClick={toggleViewTruckAssignments}
+            >
+              Hide
+            </button>
+            <ViewTruckAssignments
+              companyCode={companyCode}
+              assignments={truckAssignments}
+              onDeleteAssignment={fetchTruckAssignments}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

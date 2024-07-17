@@ -76,10 +76,7 @@ const AssignTruck = ({ companyCode }) => {
           ))}
         </select>
       </div>
-      <button
-        className={`btn btn-success ${styles.button}`}
-        onClick={handleAssign}
-      >
+      <button className="btn btn-primary" onClick={handleAssign}>
         Assign
       </button>
     </div>

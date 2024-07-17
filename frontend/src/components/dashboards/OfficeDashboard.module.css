@@ -49,7 +49,7 @@
 .mainContent {
   flex-grow: 1;
   padding: 20px;
-  padding-top: 74px; /* Add top padding equal to the navbar height */
+  padding-top: 30px; /* Add top padding equal to the navbar height */
   overflow-y: auto;
   box-sizing: border-box;
   background-color: #f4f4f4; /* Light background for the main content */
