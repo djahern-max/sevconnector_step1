@@ -131,17 +131,18 @@ img {
   margin: 1.2rem 0;
 }
 
-.form .form input[type="text"],
-.form input[type="username"],
-.form input[type="password"],
-.form input[type="date"],
-.form select,
-.form textarea {
+input[type="text"],
+input[type="username"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
   display: block;
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  margin-bottom: 1rem; /* Add margin for better spacing */
 }
 
 .form input[type="submit"],
@@ -176,7 +177,7 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
-  background-color: rgba(52, 58, 64, 0.9); /* dark-color with 0.9 opacity */
+  background-color: rgba(52, 58, 64, 0.87);
   color: #fff;
   position: fixed;
   width: 100%;

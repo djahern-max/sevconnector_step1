@@ -66,16 +66,18 @@ const Register = () => {
             name="name"
             value={name}
             onChange={onChange}
+            className="form-input"
             required
           />
         </div>
         <div className="form-group">
           <input
-            type="username"
-            placeholder="username"
+            type="text"
+            placeholder="Username"
             name="username"
             value={username}
             onChange={onChange}
+            className="form-input"
             required
           />
         </div>
@@ -86,6 +88,7 @@ const Register = () => {
             name="password"
             value={password}
             onChange={onChange}
+            className="form-input"
             required
           />
         </div>
@@ -96,11 +99,18 @@ const Register = () => {
             name="password2"
             value={password2}
             onChange={onChange}
+            className="form-input"
             required
           />
         </div>
         <div className="form-group">
-          <select name="role" value={role} onChange={onChange} required>
+          <select
+            name="role"
+            value={role}
+            onChange={onChange}
+            className="form-select"
+            required
+          >
             <option value="Driver">Driver</option>
             <option value="Super">Super</option>
             <option value="Office">Office</option>
@@ -113,6 +123,7 @@ const Register = () => {
             name="company_code"
             value={company_code}
             onChange={onChange}
+            className="form-input"
             required
           />
         </div>
