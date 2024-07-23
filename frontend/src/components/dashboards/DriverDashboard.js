@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../../App.css";
 
 const DriverDashboard = () => {
   const [formData, setFormData] = useState({
@@ -82,8 +83,6 @@ const DriverDashboard = () => {
 
   return (
     <div className="form-container mt-5">
-      {" "}
-      {/* Added mt-5 class for top margin */}
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <p className="form-label">Hauled From:</p>
@@ -148,7 +147,7 @@ const DriverDashboard = () => {
             className="form-select"
             name="quantity"
             id="quantity"
-            value={formData.phaseCodes}
+            value={formData.quantity}
             onChange={handleChange}
           >
             <option value="">How much?</option>
@@ -181,7 +180,7 @@ const DriverDashboard = () => {
               <option>Loading...</option>
             )}
           </select>
-          <button type="submit" className="form-button">
+          <button type="submit" className="btn btn-primary form-button">
             Submit Delivery
           </button>
         </div>

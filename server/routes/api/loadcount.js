@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM loadcount'
+  const sql = 'SELECT * FROM loadcount ORDER BY quantity ASC'
   db.query(sql, (error, results) => {
     if (error) {
       console.error('Error fetching loadcounts: ', error)

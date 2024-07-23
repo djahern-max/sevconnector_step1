@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM material'
+  const sql = 'SELECT * FROM material ORDER BY description ASC'
   db.query(sql, (error, results) => {
     if (error) {
       console.error('Error fetching deliveries: ', error)

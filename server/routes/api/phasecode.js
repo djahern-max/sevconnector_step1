@@ -1,17 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const cors = require('cors')
-require('dotenv').config()
 const mysql = require('mysql2')
 const config = require('../../config/db')
 
-const app = express()
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-)
-
+// Create the MySQL connection
 const db = mysql.createConnection(config.database)
 
 db.connect((err) => {
@@ -24,7 +16,7 @@ db.connect((err) => {
 
 router.post('/', (req, res) => {
   const { ItemID, Description } = req.body
-  const sql = `INSERT INTO phasecode (phaseCode) VALUES (?, ?. ?)`
+  const sql = `INSERT INTO phasecode (phaseCode, Description) VALUES (?, ?)`
 
   db.query(sql, [ItemID, Description], (error, results) => {
     if (error) {
@@ -39,7 +31,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM phasecode'
+  const sql = 'SELECT * FROM phasecode ORDER BY phaseCode ASC'
   db.query(sql, (error, results) => {
     if (error) {
       console.error('Error fetching phasecode: ', error)

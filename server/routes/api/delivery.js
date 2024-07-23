@@ -6,6 +6,7 @@ const mysql = require('mysql2')
 const config = require('../../config/db')
 
 const app = express()
+app.use(express.json()) // Add this line to parse JSON request body
 app.use(
   cors({
     origin: 'http://localhost:3000',
@@ -23,12 +24,30 @@ db.connect((err) => {
 })
 
 router.post('/', (req, res) => {
-  const { hauledFrom, hauledTo, material, quantity, phaseCode } = req.body
-  const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity, company_code) VALUES (?, ?, ?, ?, ?)`
+  const { hauledFrom, hauledTo, material, quantity, phaseCode, company_code } =
+    req.body
+
+  // Validate input
+  if (!hauledFrom || !hauledTo || !material || !quantity || !phaseCode) {
+    return res
+      .status(400)
+      .send(
+        'hauledFrom, hauledTo, material, quantity, and phaseCode are required'
+      )
+  }
+
+  const sql = `INSERT INTO deliveries (hauledFrom, hauledTo, material, quantity, phaseCode, company_code) VALUES (?, ?, ?, ?, ?, ?)`
 
   db.query(
     sql,
-    [hauledFrom, hauledTo, material, quantity, phaseCode],
+    [
+      hauledFrom,
+      hauledTo,
+      material,
+      quantity,
+      phaseCode,
+      company_code || 'SEV',
+    ],
     (error, results) => {
       if (error) {
         console.error('Failed to insert data into database:', error)
