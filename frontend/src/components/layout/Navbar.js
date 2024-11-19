@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="simple-navbar">
       <h1 className="simple-navbar-logo">
         <Link to="/">
-          <i className="fa-regular fa-handshake"></i> SevConnector
+          <i className="fa-regular fa-handshake"></i>
         </Link>
       </h1>
       <ul className="simple-navbar-list">
