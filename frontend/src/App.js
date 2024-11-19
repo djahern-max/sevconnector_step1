@@ -1,19 +1,8 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
-import DriverDashboard from "./components/dashboards/DriverDashboard";
-import SuperDashboard from "./components/dashboards/SuperDashboard";
-import OfficeDashboard from "./components/dashboards/OfficeDashboard";
-import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
-import Navbar from "./components/layout/Navbar";
-import SimpleNavbar from "./components/layout/SimpleNavbar"; // Import SimpleNavbar
-import "./App.css";
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import DriverDashboard from './components/dashboards/DriverDashboard';
 
 const App = () => (
   <Router>
@@ -22,29 +11,14 @@ const App = () => (
 );
 
 const Content = () => {
-  const location = useLocation();
-  const hideNavbarRoutes = [
-    "/DriverDashboard",
-    "/SuperDashboard",
-    "/OfficeDashboard",
-  ];
-
   return (
-    <>
-      {hideNavbarRoutes.includes(location.pathname) ? (
-        <SimpleNavbar />
-      ) : (
-        <Navbar />
-      )}
-      <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/DriverDashboard" element={<DriverDashboard />} />
-        <Route exact path="/SuperDashboard" element={<SuperDashboard />} />
-        <Route exact path="/OfficeDashboard" element={<OfficeDashboard />} />
-      </Routes>
-    </>
+    <Routes>
+      {/* Redirect root (/) to login */}
+      <Route exact path="/" element={<Login />} />
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/register" element={<Register />} />
+      <Route exact path="/DriverDashboard" element={<DriverDashboard />} />
+    </Routes>
   );
 };
 

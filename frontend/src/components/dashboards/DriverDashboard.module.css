@@ -9,7 +9,7 @@ html {
 }
 
 .formContainer {
-  max-width: 450px;
+  max-width: 400px;
   width: 100%;
   padding: 40px;
   background: linear-gradient(145deg, #3a3a3a, #4a4a4a);
@@ -21,9 +21,6 @@ html {
   flex-direction: column;
   align-items: center;
   position: relative;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  max-height: unset;
-  height: auto;
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
 }
@@ -35,10 +32,7 @@ html {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: none; /* Remove text-shadow */
-  margin-bottom: 10px;
-  font-family: "Roboto", sans-serif; /* Apply Roboto font */
-  font-weight: 700; /* For bold text */
+  margin-bottom: 20px; /* Adjusted for better spacing */
 }
 
 .formSubtitle {
@@ -87,6 +81,16 @@ html {
   width: 100%;
 }
 
+.formFields {
+  width: 100%;
+}
+
+.inputGroup {
+  margin-bottom: 20px; /* Add spacing between fields */
+  display: flex;
+  flex-direction: column;
+}
+
 .formLabel {
   font-size: 1rem;
   color: #f0f0f0;
@@ -94,9 +98,6 @@ html {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  display: block;
-  font-family: "Roboto", sans-serif; /* Apply Roboto font */
-  font-weight: 700; /* For bold text */
 }
 
 .formSelect {
@@ -108,12 +109,6 @@ html {
   background-color: #ffffff;
   color: #333333;
   transition: all 0.3s ease;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  background-size: 16px;
-  font-family: "Roboto", sans-serif;
 }
 
 .formSelect:hover,
@@ -139,9 +134,6 @@ html {
   margin-right: auto;
   width: fit-content;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.2);
-  text-shadow: none; /* Remove text-shadow */
-  font-smoothing: antialiased;
-  font-family: "Roboto", sans-serif;
 }
 
 .formButton:hover {
@@ -149,6 +141,16 @@ html {
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
+
+
+
+
+
+
+
+
+
 
 .formButton:active {
   background: #c54235;

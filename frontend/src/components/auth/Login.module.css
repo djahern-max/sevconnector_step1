@@ -1,0 +1,104 @@
+.loginContainer {
+    max-width: 310px; /* Reduced the width for a better fit */
+    width: 100%;
+    padding: 30px; /* Adjusted padding to maintain proportions */
+    background: linear-gradient(145deg, #3a3a3a, #4a4a4a);
+    border-radius: 20px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2),
+      0 0 0 6px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.05),
+      20px 20px 60px #2a2a2a, -20px -20px 60px #5a5a5a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .loginTitle {
+    font-size: 1.5rem;
+    color: #ff6f61;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  
+  .loginForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formGroup {
+    margin-bottom: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formInput {
+    width: 90%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #333333;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .formInput:hover,
+  .formInput:focus {
+    border-color: #ff6f61;
+    outline: none;
+  }
+  
+  .formButton {
+    background: #e55345;
+    color: #fff;
+    padding: 12px 32px; /* Adjusted button padding */
+    font-size: 1rem; /* Slightly reduced font size */
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .formButton:hover {
+    background: #d04a3b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .formFooter {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .formFooter a {
+    color: #ff6f61;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .formFooter a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  
